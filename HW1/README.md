@@ -7,7 +7,9 @@ Question 3 of Homework 1 of VE475 in UMJI-2020Summer. In this question, we are r
 
 ## Usage
 Under Linux operation system, with the [GMP](https://gmplib.org/ "https://gmplib.org/") installed. You can simply run this code with the following commands:
-`$ g++ hw1.cpp -c hw1 -lgmpxx -lgmp`
+```
+$ g++ hw1.cpp -c hw1 -lgmpxx -lgmp
+```
 
 *Remark:* `-lgmpxx` and `-lgmp` must be added
 
@@ -25,10 +27,14 @@ The two random numbers generated will be shown in the output, as well as the cal
 Since our goal is to compare the results of these two algorithms, I output the comparison results as follows,
 
 If the results are the same the program output will be:
-`The two results are identical!!!Congradulations!!!`
+```
+The two results are identical!!!Congradulations!!!
+```
 
 If the results are not the same the program output will be: 
-`Oh no!!There must be something wrong with your algorithm!`
+```
+Oh no!!There must be something wrong with your algorithm!
+```
 
 ## Contributer
 Ming Xingyu
