@@ -1,0 +1,273 @@
+\documentclass[12pt,a4paper]{article}
+%\usepackage{ctex}
+\usepackage{amsmath,amscd,amsbsy,amssymb,latexsym,url,bm,amsthm,tabularx}
+\usepackage{epsfig,graphicx,subfigure}
+\usepackage{enumitem,balance}
+\usepackage{wrapfig}
+\usepackage{mathrsfs,euscript}
+\usepackage[x11names,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage[vlined,ruled,commentsnumbered,linesnumbered]{algorithm2e}
+\usepackage{listings}
+
+%\usepackage{fontspec}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{exercise}{Exercise}
+\newtheorem*{solution}{Solution}
+\newtheorem{definition}{Definition}
+\theoremstyle{definition}
+
+\begin{document}
+\vspace*{0.25cm}
+
+\hrulefill
+
+\thispagestyle{empty}
+
+\begin{center}
+\begin{large}
+\sc{UM--SJTU Joint Institute \vspace{0.3em} \\ Electronic Circuits \\(Ve311)}
+\end{large}
+
+\hrulefill
+
+\vspace*{5cm}
+\begin{Large}
+\sc{{HW 1}}
+\end{Large}
+\end{center}
+
+
+\vfill
+
+\begin{table}[h!]
+\flushleft
+\begin{tabular}{ll}
+Name: Ming Xingyu \hspace*{2em}&
+ID: 517370910224\hspace*{2em}\\
+\end{tabular}
+\end{table}
+
+\hfill
+\newpage
+\section{Ex.1}
+\subsection{}
+
+
+Since the text is encrypted by Caesar Cypher, we can list all the possible results. 
+
+\noindent
+GXKTG
+HYLUH
+IZMVI
+JANWJ
+KBOXK
+LCPYL
+MDQZM
+NERAN
+OFSBO
+PGTCP
+QHUDQ
+\textit{RIVER}
+SJWFS
+TKXGT
+ULYHU
+VMZIV
+WNAJW
+XOBKX
+YPCLY
+ZQDMZ
+\textit{ARENA}
+BSFOB
+CTGPC
+DUHQD
+
+Based on observation and my vocabulary, the text could be either RIVER or ARENA. 
+\subsection{}
+There are 4 letters for this word, hence, it can form a $2\times 2$ matrix. Here for dont and ELNI, we can derive
+$$
+\left(
+\begin{matrix}
+3&14\\
+13&19
+\end{matrix}
+\right)
+$$
+and
+$$
+\left(
+\begin{matrix}
+4&11\\
+13&8
+\end{matrix}
+\right)
+$$
+
+Hence, we can have the following equation
+$$
+\left(\begin{array}{cc}
+3 & 14 \\
+13 & 19
+\end{array}\right)
+\left(\begin{array}{ll}
+a & b \\
+c & d
+\end{array}\right) 
+\equiv
+\left(\begin{array}{cc}
+4 & 11 \\
+13 & 8
+\end{array}\right) \bmod 26
+$$
+
+$$
+det\left(
+\begin{matrix}
+3&14\\
+13&19
+\end{matrix}
+\right)=-125
+$$
+
+Now we need to find some $x$ such that $-125\cdot x\equiv 1\ mod\ 26$. 
+We can simply have 
+$$-125=-4\times 26+(-21)$$
+$$26=-1\times (-21)+5$$
+$$-21=-4\times 5-1$$
+Hence, $1=-4\times 5+21=-4\times (26-21)+21=-4\times 26+5\times 21=4\times 26+5\times (-4\times 26+125)=(-5)\times (-125)-16\times 26$, which means $-125\times (-5)\equiv 1\ mod\ 26$ and this matrix is invertible. 
+
+The adjacent matrix of it is 
+$$
+\left(
+\begin{matrix}
+19&-13\\
+-14&3
+\end{matrix}
+\right)
+$$
+
+And the inverse of it is 
+$$
+\left(
+\begin{matrix}
+-95&70\\
+65&-15
+\end{matrix}
+\right)
+$$
+
+Now, we can calculate the key by matrix multiplication as follows, 
+$$
+\left(\begin{array}{ll}
+a & b \\
+c & d
+\end{array}\right) 
+\equiv
+\left(
+\begin{matrix}
+-95&70\\
+65&-15
+\end{matrix}
+\right)\times 
+\left(\begin{array}{cc}
+4 & 11 \\
+13 & 8
+\end{array}\right) \bmod 26
+$$
+$$
+\left(\begin{array}{ll}
+a & b \\
+c & d
+\end{array}\right) 
+\equiv
+\left(\begin{array}{cc}
+530 & -485 \\
+65 & 595
+\end{array}\right) \bmod 26
+$$
+
+Finally, we have 
+$$
+\left(\begin{array}{ll}
+a & b \\
+c & d
+\end{array}\right) 
+=
+\left(\begin{array}{cc}
+10 & 9 \\
+13 & 23
+\end{array}\right)
+$$
+\subsection{}
+Since, $n\mid ab$, we can simply derive $ab=kn,\ k\in \mathbb{N}$. 
+
+\noindent Then $b=\frac{kn}{a}$. Because $gcd(a,n)=1\land b\in \mathbb{N}$, we have $a\mid k$, 
+
+
+\noindent i.e. $k=ca,\ c\in \mathbb{N}$. 
+
+\noindent Hence, $b=cn\Leftrightarrow n\mid b$. 
+\subsection{}
+By Chinese Reminder Theorem, we can have 
+$$30030=116\times 257+218$$
+$$257=218+39$$
+$$218=39\times 5+23$$
+$$39=23+16$$
+$$23=16+7$$
+$$16=7\times 2 +2$$
+$$7=2\times 3+1$$
+$$2=2\times 1$$
+Hence, $gcd(30030,257)=1$. 
+
+Noticing that $\sqrt[2]{257}=16.03122$, hence, the prime factor of it can only be among 2, 3, 5, 7, 11, 13. By brutal force we can have 
+$$257=128\times 2+1$$
+$$257=85\times 3+2$$
+$$257=51\times 5+2$$
+$$257=36\times 7+5$$
+$$257=23\times 11+4$$
+$$257=19\times 13+8$$
+So, there is no factor for 257, which indicates 257 is prime. 
+\subsection{}
+We learn from the lecture that OTP use bitwise-XOR operation on the plaintext and the key. 
+
+For the XOR operation we can have $a\oplus b=c\Rightarrow a\oplus c=b$. So, for the CPCA, the enemy can derive the key and when we reuse it, the cipertext can be easily decipered. 
+\subsection{}
+According to the lecture slides, we know that in order to make it safe, it must let the attacker to do at least $2^128$ times computation, hence, 
+$$\sqrt{nlogn}\geq128$$
+$$nlogn\geq 16384$$
+For the algorithm implementation, the base number may varies. Here, we assume the base number to be 2. And the solution is 
+$$n\geq 1546.43$$
+
+Since $n\in \mathbb{N}$, the size should be larger than 1547. 
+\newpage
+\section{}
+\subsection{}
+Firstly, for the Vigenère cipher, it has a Table, as shown below
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{vc.png}
+\caption{Vigenère cipher table. }
+\end{figure}
+
+
+Secondly, similar to the Caesar cipher, the principle of Vigenère cipher is to shift the letter according to the table by the key. 
+
+Then, the key is a key word, in which every letter indicate the line we look-up in the table, which will repeat itself until the length of it is the same as the plain-text during encryption. 
+
+During encryption, one letter in the key corresponding to one letter in the plain-text. For example, we have $fat$ for the plain-text and $meat$ for the key, we have 
+$$f\rightarrow m\Rightarrow R$$
+$$a\rightarrow e\Rightarrow E$$
+$$t\rightarrow a\Rightarrow T$$
+And the ciphertext is RET. 
+\subsection{}
+\subsubsection{}
+Since the cipher-text may repeat itself every six letters, it is reasonable for Eve to suspect the plain-text is some repeated letters with length as 1, 2, 3, 6(dividers of 6). 
+\subsubsection{}
+As mentioned above, the cipher-text repeated every 6 letters. The length of the key is very likely to be 6. 
+\subsubsection{}
+According to the helpful hint, we know that there is no English word of length 6 is a shift of another English word. If Eve guess the plain-text to be a repeated letter, she can simply look-up the dictionary to find all the English words and find which one matches the encryption. 
+\end{document}
